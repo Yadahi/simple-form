@@ -19,12 +19,12 @@
       background-color: #fddddd;
     }
   }
-
+  &__form {
+  }
   &__message {
     &--required {
-      color: #e6e6ea;
+      color: #b2b2b2;
       font-weight: normal;
-      font-style: italic;
     }
     &--error {
       color: #b40e0e;
@@ -36,6 +36,10 @@
     gap: 1.25rem;
   }
   &__action {
+  }
+  &__heading {
+    text-align: center;
+    margin-top: 0;
   }
   &__button {
     width: 100%;
