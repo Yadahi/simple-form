@@ -4,12 +4,17 @@ const isNotEmpty = (value) => value.trim() !== "";
 
 const BasicForm = () => {
   const [textInput, setTextInput] = useState("");
+  const [textInputTouched, setTextInputTouched] = useState(false);
 
   const textInputIsValid = isNotEmpty(textInput);
-  const textInputIsInvalid = !isNotEmpty(textInput);
+  const textInputIsInvalid = !isNotEmpty(textInput) && textInputTouched;
 
   const textChangeHandler = (event) => {
     setTextInput(event.target.value);
+  };
+
+  const textBlurHandler = () => {
+    setTextInputTouched(true);
   };
 
   const formSubmitHandler = (event) => {
@@ -49,6 +54,7 @@ const BasicForm = () => {
             col="30"
             value={textInput}
             onChange={textChangeHandler}
+            onBlur={textBlurHandler}
           ></textarea>
           {textInputIsInvalid && <p>Text is empty or invalid</p>}
         </div>
