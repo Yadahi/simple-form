@@ -5,18 +5,20 @@ const isNotEmpty = (value) => value.trim() !== "";
 const BasicForm = () => {
   const [textInput, setTextInput] = useState("");
 
+  const textInputIsValid = isNotEmpty(textInput);
+  const textInputIsInvalid = !isNotEmpty(textInput);
+
   const textChangeHandler = (event) => {
     setTextInput(event.target.value);
   };
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
-    console.log("is submiting");
-    if (!isNotEmpty(textInput)) {
+
+    if (!textInputIsValid) {
       return;
     }
 
-    console.log("Submited");
     console.log(textInput);
     setTextInput("");
   };
@@ -48,6 +50,7 @@ const BasicForm = () => {
             value={textInput}
             onChange={textChangeHandler}
           ></textarea>
+          {textInputIsInvalid && <p>Text is empty or invalid</p>}
         </div>
         <div>
           <button>Submit</button>
