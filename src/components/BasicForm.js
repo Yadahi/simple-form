@@ -136,7 +136,6 @@ const BasicForm = () => {
             onChange={firstNameChangeHandler}
             onBlur={firstNameBlurHandler}
           ></input>
-          {firstNameInputIsInvalid && <p>First name is invalid</p>}
         </div>
         <div>
           <label htmlFor="last-name">Last Name:</label>
@@ -147,10 +146,9 @@ const BasicForm = () => {
             onChange={lastNameChangeHandler}
             onBlur={lastNameBlurHandler}
           ></input>
-          {lastNameInputIsInvalid && <p>Last name is invalid</p>}
         </div>
         <div>
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email">Email* (Required)</label>
           <input
             type="email"
             id="email"
@@ -163,7 +161,7 @@ const BasicForm = () => {
           )}
         </div>
         <div>
-          <label htmlFor="phone">Phone:</label>
+          <label htmlFor="phone">Phone* (Required)</label>
           <input
             type="tel"
             id="phone"
@@ -176,7 +174,7 @@ const BasicForm = () => {
           )}
         </div>
         <div>
-          <label htmlFor="text">Last Name:</label>
+          <label htmlFor="text">Message* (Required)</label>
           <textarea
             id="text"
             row="5"
