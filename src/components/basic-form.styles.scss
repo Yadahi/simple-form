@@ -58,5 +58,12 @@
       background-color: #005866;
       border-color: #005866;
     }
+    // TODO change color
+    &:disabled,
+    &:disabled:hover,
+    &:disabled:active {
+      background-color: #ccc;
+      border-color: #ccc;
+    }
   }
 }

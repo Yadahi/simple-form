@@ -141,8 +141,9 @@ const BasicForm = () => {
       <div className="form-control">
         <h1 className="form-control__heading">Basic Form</h1>
         {isLoading && <p>Loading...</p>}
-        {isError && <p>Invalid email: {emailInput}</p>}
-        <form class="form-control__form" onSubmit={formSubmitHandler}>
+        {/* {is} */}
+        {/* {isError && <p>Invalid email: {emailInput}</p>} */}
+        <form className="form-control__form" onSubmit={formSubmitHandler}>
           <div className="form-control__group">
             <div>
               <label htmlFor="first-name">First Name:</label>
