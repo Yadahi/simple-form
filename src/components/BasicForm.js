@@ -1,3 +1,4 @@
+import "./basic-form.styles.scss";
 import { useState } from "react";
 import useInput from "../hooks/useInput";
 
@@ -148,7 +149,9 @@ const BasicForm = () => {
           ></input>
         </div>
         <div>
-          <label htmlFor="email">Email* (Required)</label>
+          <label htmlFor="email">
+            Email* <span>(Required)</span>
+          </label>
           <input
             type="email"
             id="email"
@@ -161,7 +164,9 @@ const BasicForm = () => {
           )}
         </div>
         <div>
-          <label htmlFor="phone">Phone* (Required)</label>
+          <label htmlFor="phone">
+            Phone* <span>(Required)</span>
+          </label>
           <input
             type="tel"
             id="phone"
@@ -174,7 +179,9 @@ const BasicForm = () => {
           )}
         </div>
         <div>
-          <label htmlFor="text">Message* (Required)</label>
+          <label htmlFor="text">
+            Message* <span>(Required)</span>
+          </label>
           <textarea
             id="text"
             row="5"
