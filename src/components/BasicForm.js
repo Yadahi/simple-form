@@ -10,6 +10,7 @@ const BasicForm = () => {
   const formSubmitHandler = (event) => {
     event.preventDefault();
     console.log(textInput);
+    setTextInput("");
   };
   return (
     <div>
@@ -36,6 +37,7 @@ const BasicForm = () => {
             id="text"
             row="5"
             col="30"
+            value={textInput}
             onChange={textChangeHandler}
           ></textarea>
         </div>
