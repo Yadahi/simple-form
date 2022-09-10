@@ -25,8 +25,8 @@ const useInput = (validateValue) => {
     valueTouched: inputValueTouched,
     valueIsValid: inputValueIsValid,
     valueHasError: inputValueIsNotValid,
-    setInputValue,
-    setInputValueTouched,
+    inputValueChangeHandler,
+    inputValueBlurHandler,
     resetInput,
   };
 };

@@ -1,21 +1,18 @@
 import { useState } from "react";
+import useInput from "../hooks/useInput";
 
 const isNotEmpty = (value) => value.trim() !== "";
 
 const BasicForm = () => {
-  const [textInput, setTextInput] = useState("");
-  const [textInputTouched, setTextInputTouched] = useState(false);
-
-  const textInputIsValid = isNotEmpty(textInput);
-  const textInputIsInvalid = !isNotEmpty(textInput) && textInputTouched;
-
-  const textChangeHandler = (event) => {
-    setTextInput(event.target.value);
-  };
-
-  const textBlurHandler = () => {
-    setTextInputTouched(true);
-  };
+  const {
+    value: textInput,
+    valueTouched: textInputTouched,
+    valueIsValid: textInputIsValid,
+    valueHasError: textInputIsInvalid,
+    inputValueChangeHandler: textChangeHandler,
+    inputValueBlurHandler: textBlurHandler,
+    resetInput: textResetInput,
+  } = useInput(isNotEmpty);
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
@@ -25,8 +22,7 @@ const BasicForm = () => {
     }
 
     console.log(textInput);
-    setTextInput("");
-    setTextInputTouched(false);
+    textResetInput();
   };
   return (
     <div>
