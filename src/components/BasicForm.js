@@ -123,79 +123,103 @@ const BasicForm = () => {
       textResetInput();
     }, 3000);
   };
+
+  const emailInputClasses = emailInputIsInvalid
+    ? "form-control--invalid"
+    : "form-control";
+
+  const phoneInputClasses = phoneInputIsInvalid
+    ? "form-control--invalid"
+    : "form-control";
+
+  const textInputClasses = textInputIsInvalid
+    ? "form-control--invalid"
+    : "form-control";
+
   return (
     <div>
       {isLoading && <p>Loading...</p>}
       {isError && <p>Invalid email: {emailInput}</p>}
-      <form onSubmit={formSubmitHandler}>
-        <div>
-          <label htmlFor="first-name">First Name:</label>
-          <input
-            type="text"
-            id="first-name"
-            value={firstNameInput}
-            onChange={firstNameChangeHandler}
-            onBlur={firstNameBlurHandler}
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="last-name">Last Name:</label>
-          <input
-            type="text"
-            id="last-name"
-            value={lastNameInput}
-            onChange={lastNameChangeHandler}
-            onBlur={lastNameBlurHandler}
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="email">
-            Email* <span>(Required)</span>
-          </label>
-          <input
-            type="email"
-            id="email"
-            value={emailInput}
-            onChange={emailChangeHandler}
-            onBlur={emailBlurHandler}
-          ></input>
-          {(emailInputIsInvalid || !formInputValidity.email) && (
-            <p>Email is invalid</p>
-          )}
-        </div>
-        <div>
-          <label htmlFor="phone">
-            Phone* <span>(Required)</span>
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            value={phoneInput}
-            onChange={phoneChangeHandler}
-            onBlur={phoneBlurHandler}
-          ></input>
-          {(phoneInputIsInvalid || !formInputValidity.phone) && (
-            <p>Phone is invalid</p>
-          )}
-        </div>
-        <div>
-          <label htmlFor="text">
-            Message* <span>(Required)</span>
-          </label>
-          <textarea
-            id="text"
-            row="5"
-            col="30"
-            value={textInput}
-            onChange={textChangeHandler}
-            onBlur={textBlurHandler}
-          ></textarea>
-          {(textInputIsInvalid || !formInputValidity.text) && (
-            <p>Text is invalid</p>
-          )}
-        </div>
-        <div>
-          <button disabled={!formIsValid}>Submit</button>
+      <form class="form-control" onSubmit={formSubmitHandler}>
+        <div className="form-control__group">
+          <div>
+            <label htmlFor="first-name">First Name:</label>
+            <input
+              type="text"
+              id="first-name"
+              value={firstNameInput}
+              onChange={firstNameChangeHandler}
+              onBlur={firstNameBlurHandler}
+            ></input>
+          </div>
+          <div>
+            <label htmlFor="last-name">Last Name:</label>
+            <input
+              type="text"
+              id="last-name"
+              value={lastNameInput}
+              onChange={lastNameChangeHandler}
+              onBlur={lastNameBlurHandler}
+            ></input>
+          </div>
+          <div className={emailInputClasses}>
+            <label htmlFor="email">
+              Email*{" "}
+              <span className="form-control__message--required">
+                (Required)
+              </span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              value={emailInput}
+              onChange={emailChangeHandler}
+              onBlur={emailBlurHandler}
+            ></input>
+            {(emailInputIsInvalid || !formInputValidity.email) && (
+              <p className="form-control__message--error">Email is invalid</p>
+            )}
+          </div>
+          <div className={phoneInputClasses}>
+            <label htmlFor="phone">
+              Phone*{" "}
+              <span className="form-control__message--required">
+                (Required)
+              </span>
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              value={phoneInput}
+              onChange={phoneChangeHandler}
+              onBlur={phoneBlurHandler}
+            ></input>
+            {(phoneInputIsInvalid || !formInputValidity.phone) && (
+              <p className="form-control__message--error">Phone is invalid</p>
+            )}
+          </div>
+          <div className={textInputClasses}>
+            <label htmlFor="text">
+              Message*{" "}
+              <span className="form-control__message--required">
+                (Required)
+              </span>
+            </label>
+            <textarea
+              id="text"
+              row="5"
+              col="30"
+              value={textInput}
+              onChange={textChangeHandler}
+              onBlur={textBlurHandler}
+            ></textarea>
+            {(textInputIsInvalid || !formInputValidity.text) && (
+              <p className="form-control__message--error">Text is invalid</p>
+            )}
+          </div>
+          <div>
+            <button disabled={!formIsValid}>Submit</button>
+          </div>
         </div>
       </form>
     </div>
