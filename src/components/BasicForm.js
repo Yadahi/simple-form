@@ -1,7 +1,19 @@
+import { useState } from "react";
+
 const BasicForm = () => {
+  const [textInput, setTextInput] = useState("");
+
+  const textChangeHandler = (event) => {
+    setTextInput(event.target.value);
+  };
+
+  const formSubmitHandler = (event) => {
+    event.preventDefault();
+    console.log(textInput);
+  };
   return (
     <div>
-      <form>
+      <form onSubmit={formSubmitHandler}>
         <div>
           <label htmlFor="first-name">First Name:</label>
           <input type="text" id="first-name"></input>
@@ -20,7 +32,15 @@ const BasicForm = () => {
         </div>
         <div>
           <label htmlFor="text">Last Name:</label>
-          <textarea id="text" row="5" col="30"></textarea>
+          <textarea
+            id="text"
+            row="5"
+            col="30"
+            onChange={textChangeHandler}
+          ></textarea>
+        </div>
+        <div>
+          <button>Submit</button>
         </div>
       </form>
     </div>
