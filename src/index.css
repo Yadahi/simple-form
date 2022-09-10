@@ -9,6 +9,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-color: #f4f4f8; */
+  height: 100vh;
+  background: linear-gradient(#fffaeb, #ffebeb);
 }
 
 code {
@@ -22,6 +25,7 @@ code {
   border-radius: 12px;
   margin: 3rem auto;
   padding: 2rem;
+  background-color: #fff;
 }
 @media (min-width: 640px) {
   .app {
