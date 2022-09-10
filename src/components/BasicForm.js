@@ -1,4 +1,3 @@
-import { useState } from "react";
 import useInput from "../hooks/useInput";
 
 const isNotEmpty = (value) => value.trim() !== "";
@@ -6,13 +5,18 @@ const isNotEmpty = (value) => value.trim() !== "";
 const BasicForm = () => {
   const {
     value: textInput,
-    valueTouched: textInputTouched,
     valueIsValid: textInputIsValid,
     valueHasError: textInputIsInvalid,
     inputValueChangeHandler: textChangeHandler,
     inputValueBlurHandler: textBlurHandler,
     resetInput: textResetInput,
   } = useInput(isNotEmpty);
+
+  let formIsValid = false;
+
+  if (textInputIsValid) {
+    formIsValid = true;
+  }
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
@@ -56,7 +60,7 @@ const BasicForm = () => {
           {textInputIsInvalid && <p>Text is empty or invalid</p>}
         </div>
         <div>
-          <button>Submit</button>
+          <button disabled={!formIsValid}>Submit</button>
         </div>
       </form>
     </div>
