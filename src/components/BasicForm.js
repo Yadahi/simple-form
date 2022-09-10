@@ -1,6 +1,13 @@
 import useInput from "../hooks/useInput";
 
+const EMAIL_REGEX =
+  /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+const PHONE_REGEX = /^\+?([0-9]{4,})/;
+
 const isNotEmpty = (value) => value.trim() !== "";
+const isEmail = (value) => EMAIL_REGEX.test(value);
+const isPhone = (value) => PHONE_REGEX.test(value);
 
 const BasicForm = () => {
   // First name
@@ -24,7 +31,6 @@ const BasicForm = () => {
   } = useInput(isNotEmpty);
 
   // Email
-  // TODO need to update the email validation function
   const {
     value: emailInput,
     valueIsValid: emailInputIsValid,
@@ -32,10 +38,9 @@ const BasicForm = () => {
     inputValueChangeHandler: emailChangeHandler,
     inputValueBlurHandler: emailBlurHandler,
     resetInput: emailResetInput,
-  } = useInput(isNotEmpty);
+  } = useInput(isEmail);
 
   // Phone
-  // TODO need to update the phone validation function
   const {
     value: phoneInput,
     valueIsValid: phoneInputIsValid,
@@ -43,7 +48,7 @@ const BasicForm = () => {
     inputValueChangeHandler: phoneChangeHandler,
     inputValueBlurHandler: phoneBlurHandler,
     resetInput: phoneResetInput,
-  } = useInput(isNotEmpty);
+  } = useInput(isPhone);
 
   // Textarea
   const {
