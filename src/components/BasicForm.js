@@ -1,3 +1,4 @@
+import { useState } from "react";
 import useInput from "../hooks/useInput";
 
 const EMAIL_REGEX =
@@ -10,6 +11,13 @@ const isEmail = (value) => EMAIL_REGEX.test(value);
 const isPhone = (value) => PHONE_REGEX.test(value);
 
 const BasicForm = () => {
+  const [formInputValidity, setFormInputValidity] = useState({
+    firstName: true,
+    lastName: true,
+    email: true,
+    phone: true,
+    text: true,
+  });
   // First name
   const {
     value: firstNameInput,
@@ -69,7 +77,15 @@ const BasicForm = () => {
   const formSubmitHandler = (event) => {
     event.preventDefault();
 
-    if (!textInputIsValid) {
+    setFormInputValidity({
+      firstName: firstNameInputIsValid,
+      lastName: lastNameInputIsValid,
+      email: emailInputIsValid,
+      phone: phoneInputIsValid,
+      text: textInputIsValid,
+    });
+
+    if (!formIsValid) {
       return;
     }
 
@@ -121,7 +137,9 @@ const BasicForm = () => {
             onChange={emailChangeHandler}
             onBlur={emailBlurHandler}
           ></input>
-          {emailInputIsInvalid && <p>Email is invalid</p>}
+          {(emailInputIsInvalid || !formInputValidity.email) && (
+            <p>Email is invalid</p>
+          )}
         </div>
         <div>
           <label htmlFor="phone">Phone:</label>
@@ -132,7 +150,9 @@ const BasicForm = () => {
             onChange={phoneChangeHandler}
             onBlur={phoneBlurHandler}
           ></input>
-          {phoneInputIsInvalid && <p>Phone is invalid</p>}
+          {(phoneInputIsInvalid || !formInputValidity.phone) && (
+            <p>Phone is invalid</p>
+          )}
         </div>
         <div>
           <label htmlFor="text">Last Name:</label>
@@ -144,7 +164,9 @@ const BasicForm = () => {
             onChange={textChangeHandler}
             onBlur={textBlurHandler}
           ></textarea>
-          {textInputIsInvalid && <p>Text is invalid</p>}
+          {(textInputIsInvalid || !formInputValidity.text) && (
+            <p>Text is invalid</p>
+          )}
         </div>
         <div>
           <button disabled={!formIsValid}>Submit</button>
