@@ -1,6 +1,8 @@
 import "./basic-form.styles.scss";
 import { useState } from "react";
 import useInput from "../hooks/useInput";
+import ErrorMessage from "./ErrorMessage";
+import LoadingComponent from "./Loading";
 
 const EMAIL_REGEX =
   /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -140,9 +142,8 @@ const BasicForm = () => {
     <div>
       <div className="form-control">
         <h1 className="form-control__heading">Basic Form</h1>
-        {isLoading && <p>Loading...</p>}
-        {/* {is} */}
-        {/* {isError && <p>Invalid email: {emailInput}</p>} */}
+        {isLoading && <LoadingComponent></LoadingComponent>}
+        {isError && <ErrorMessage>Invalid email: {emailInput}</ErrorMessage>}
         <form className="form-control__form" onSubmit={formSubmitHandler}>
           <div className="form-control__group">
             <div>

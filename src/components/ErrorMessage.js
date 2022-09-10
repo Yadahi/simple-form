@@ -1,5 +1,5 @@
-const ErrorMessage = (message, value) => {
-  <p>{message}</p>;
+const ErrorMessage = ({ children }) => {
+  return <p>{children}</p>;
 };
 
 export default ErrorMessage;
