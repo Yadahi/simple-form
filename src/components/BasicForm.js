@@ -26,6 +26,7 @@ const BasicForm = () => {
 
     console.log(textInput);
     setTextInput("");
+    setTextInputTouched(false);
   };
   return (
     <div>
