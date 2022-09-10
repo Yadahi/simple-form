@@ -18,6 +18,9 @@ const BasicForm = () => {
     phone: true,
     text: true,
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+
   // First name
   const {
     value: firstNameInput,
@@ -77,6 +80,7 @@ const BasicForm = () => {
   const formSubmitHandler = (event) => {
     event.preventDefault();
 
+    setIsLoading(true);
     setFormInputValidity({
       firstName: firstNameInputIsValid,
       lastName: lastNameInputIsValid,
@@ -89,22 +93,39 @@ const BasicForm = () => {
       return;
     }
 
-    console.log(
-      "Form input values:",
-      firstNameInput,
-      lastNameInput,
-      emailInput,
-      phoneInput,
-      textInput
-    );
-    firstNameResetInput();
-    lastNameResetInput();
-    emailResetInput();
-    phoneResetInput();
-    textResetInput();
+    setTimeout(() => {
+      if (emailInput === "neexistujici@email.cz") {
+        setIsError(true);
+        setFormInputValidity({
+          firstName: true,
+          lastName: true,
+          email: false,
+          phone: true,
+          text: true,
+        });
+        setIsLoading(false);
+        return;
+      }
+      console.log(
+        "Form input values:",
+        firstNameInput,
+        lastNameInput,
+        emailInput,
+        phoneInput,
+        textInput
+      );
+      setIsLoading(false);
+      firstNameResetInput();
+      lastNameResetInput();
+      emailResetInput();
+      phoneResetInput();
+      textResetInput();
+    }, 3000);
   };
   return (
     <div>
+      {isLoading && <p>Loading...</p>}
+      {isError && <p>Invalid email: {emailInput}</p>}
       <form onSubmit={formSubmitHandler}>
         <div>
           <label htmlFor="first-name">First Name:</label>
