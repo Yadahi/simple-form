@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const isNotEmpty = (value) => value.trim() !== "";
+
 const BasicForm = () => {
   const [textInput, setTextInput] = useState("");
 
@@ -9,6 +11,12 @@ const BasicForm = () => {
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
+    console.log("is submiting");
+    if (!isNotEmpty(textInput)) {
+      return;
+    }
+
+    console.log("Submited");
     console.log(textInput);
     setTextInput("");
   };
