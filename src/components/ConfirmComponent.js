@@ -1,4 +1,4 @@
-import "./confirm.style.scss";
+import "../scss/confirm.style.scss";
 
 import SuccesIcon from "../icons/success.svg";
 

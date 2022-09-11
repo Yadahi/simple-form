@@ -1,4 +1,4 @@
-import "./loading.styles.scss";
+import "../scss/loading.styles.scss";
 
 const LoadingComponent = ({ children }) => {
   return (

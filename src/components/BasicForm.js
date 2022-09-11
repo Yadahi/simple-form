@@ -1,4 +1,4 @@
-import "./basic-form.styles.scss";
+import "../scss/basic-form.styles.scss";
 import { useState } from "react";
 import useInput from "../hooks/useInput";
 import ErrorMessage from "./ErrorMessage";

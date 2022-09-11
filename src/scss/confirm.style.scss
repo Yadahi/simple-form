@@ -1,6 +1,4 @@
 .confirm {
-  &__content {
-  }
   &__header {
     display: flex;
     justify-content: center;
@@ -8,13 +6,9 @@
   &__body {
     text-align: center;
   }
-  &__heading {
-  }
   &__icon {
     width: 5rem;
     height: 5rem;
-  }
-  &__message {
   }
   &__button {
     font-size: inherit;
