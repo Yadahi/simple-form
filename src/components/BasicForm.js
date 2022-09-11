@@ -3,6 +3,7 @@ import { useState } from "react";
 import useInput from "../hooks/useInput";
 import ErrorMessage from "./ErrorMessage";
 import LoadingComponent from "./Loading";
+import DidSubmitComponent from "./ConfirmComponent";
 
 const EMAIL_REGEX =
   /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -23,6 +24,7 @@ const BasicForm = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [isSubmited, setIsSubmited] = useState(false);
 
   // First name
   const {
@@ -118,6 +120,7 @@ const BasicForm = () => {
         textInput
       );
       setIsLoading(false);
+      setIsSubmited(true);
       firstNameResetInput();
       lastNameResetInput();
       emailResetInput();
@@ -138,14 +141,21 @@ const BasicForm = () => {
     ? "form-control--invalid"
     : "form-control";
 
-  return (
+  return isSubmited ? (
+    <DidSubmitComponent resetForm={setIsSubmited} />
+  ) : (
     <div>
       <div className="form-control">
         <h1 className="form-control__heading">Basic Form</h1>
         {isLoading && (
           <LoadingComponent>It's not you. It's me.</LoadingComponent>
         )}
-        {isError && <ErrorMessage>Invalid email: {emailInput}</ErrorMessage>}
+        {isError && (
+          <ErrorMessage>
+            The email you entered <span>'{emailInput}'</span> did not match our
+            records. Please double-check and try again.
+          </ErrorMessage>
+        )}
         <form className="form-control__form" onSubmit={formSubmitHandler}>
           <div className="form-control__group">
             <div>
@@ -183,7 +193,7 @@ const BasicForm = () => {
                 onBlur={emailBlurHandler}
               ></input>
               {(emailInputIsInvalid || !formInputValidity.email) && (
-                <p className="form-control__message--error">Email is invalid</p>
+                <p className="form-control__message--error">Invalid email</p>
               )}
             </div>
             <div className={phoneInputClasses}>
@@ -201,7 +211,7 @@ const BasicForm = () => {
                 onBlur={phoneBlurHandler}
               ></input>
               {(phoneInputIsInvalid || !formInputValidity.phone) && (
-                <p className="form-control__message--error">Phone is invalid</p>
+                <p className="form-control__message--error">Invalid phone</p>
               )}
             </div>
             <div className={textInputClasses}>
@@ -220,7 +230,7 @@ const BasicForm = () => {
                 onBlur={textBlurHandler}
               ></textarea>
               {(textInputIsInvalid || !formInputValidity.text) && (
-                <p className="form-control__message--error">Text is invalid</p>
+                <p className="form-control__message--error">Invalid text</p>
               )}
             </div>
             <div>

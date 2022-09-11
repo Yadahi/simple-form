@@ -1,0 +1,43 @@
+.confirm {
+  &__content {
+  }
+  &__header {
+    display: flex;
+    justify-content: center;
+  }
+  &__body {
+    text-align: center;
+  }
+  &__heading {
+  }
+  &__icon {
+    width: 5rem;
+    height: 5rem;
+  }
+  &__message {
+  }
+  &__button {
+    font-size: inherit;
+    color: #fff;
+    font-weight: bold;
+    margin-top: 1.5rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    border: 1px solid #25ae88;
+    background-color: #25ae88;
+    cursor: pointer;
+
+    &:hover,
+    &:active {
+      background-color: #19795f;
+      border-color: #19795f;
+    }
+    // TODO change color
+    &:disabled,
+    &:disabled:hover,
+    &:disabled:active {
+      background-color: #ccc;
+      border-color: #ccc;
+    }
+  }
+}

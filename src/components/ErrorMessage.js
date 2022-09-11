@@ -1,5 +1,7 @@
+import "./error-message.styles.scss";
+
 const ErrorMessage = ({ children }) => {
-  return <p>{children}</p>;
+  return <p className="error-message">{children}</p>;
 };
 
 export default ErrorMessage;
