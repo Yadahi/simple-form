@@ -222,7 +222,10 @@ const BasicForm = () => {
               )}
             </div>
             <div>
-              <button className="form-control__button" disabled={!formIsValid}>
+              <button
+                className="form-control__button"
+                disabled={!formIsValid || isLoading}
+              >
                 Submit
               </button>
             </div>
