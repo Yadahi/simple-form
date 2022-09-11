@@ -1,6 +1,6 @@
 import "./loading.styles.scss";
 
-const LoadingComponent = () => {
+const LoadingComponent = ({ children }) => {
   return (
     <div className="modal modal__container">
       <div className="modal__content">
@@ -10,7 +10,7 @@ const LoadingComponent = () => {
           <div></div>
           <div></div>
         </div>
-        <p className="">Please wait form is being validated...</p>
+        <p className="">{children}</p>
       </div>
     </div>
   );

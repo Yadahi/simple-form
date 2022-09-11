@@ -142,7 +142,9 @@ const BasicForm = () => {
     <div>
       <div className="form-control">
         <h1 className="form-control__heading">Basic Form</h1>
-        {isLoading && <LoadingComponent></LoadingComponent>}
+        {isLoading && (
+          <LoadingComponent>It's not you. It's me.</LoadingComponent>
+        )}
         {isError && <ErrorMessage>Invalid email: {emailInput}</ErrorMessage>}
         <form className="form-control__form" onSubmit={formSubmitHandler}>
           <div className="form-control__group">
